@@ -2,9 +2,8 @@ export default {
 	async fetch(request, env, ctx) {
 		const urbanMainPageResponse = await fetch('https://www.urbandictionary.com');
 
-		if (!urbanMainPageResponse.ok) {
+		if (!urbanMainPageResponse.ok)
 			return new Response('Failed to fetch Urban Dictionary main page', { status: urbanMainPageResponse.status });
-		}
 
 		const urbanMainPageText = await urbanMainPageResponse.text();
 
@@ -19,9 +18,9 @@ export default {
 		// undocumented api goes brrr
 		const urbanWordResponse = await fetch("https://api.urbandictionary.com/v0/define?term=" + encodeURIComponent(wordPath[1]));
 
-		if (!urbanWordResponse.ok) {
+		if (!urbanWordResponse.ok)
 			return new Response('Failed to fetch Urban Dictionary word', { status: urbanWordResponse.status });
-		}
+
 		const urbanWordData = await urbanWordResponse.json();
 
 		if (!urbanWordData || urbanWordData.length === 0) {
